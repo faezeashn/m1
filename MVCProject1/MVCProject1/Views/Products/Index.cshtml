@@ -1,0 +1,79 @@
+﻿@model List<MVCProject1.Models.Products>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 style="direction:rtl;">
+    
+   @Html.ActionLink("درج محصول", "Create", new { Name = "" }, new { @class = "btn btn-success" })
+    
+</h2>
+
+    <table class="table" style="direction:rtl ">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().Id)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().CountryId)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().CompanyId)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().CategoryId)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().BrandName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().ModelNo)
+            </td>
+            <td>
+                @Html.DisplayNameFor(x => x.FirstOrDefault().Description)
+            </td>
+           
+           
+           
+
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Country.Name
+                </td>
+                <td>
+                    @item.Company.Name
+                </td>
+                <td>
+                    @item.Category.Name
+                </td>
+                <td>
+                    @item.BrandName
+                </td>
+                <td>
+                    @item.ModelNo
+                </td>
+                <td>
+                    @item.Description
+                </td>
+                
+                
+                
+                <td>
+                    @Html.ActionLink("ویرایش", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("حذف", "Delete", new { Id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
